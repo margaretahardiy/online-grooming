@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use View;
+use Illuminate\Support\Facades\Input;
+use DB;
+use Hash;
 
 class LoginController extends Controller
 {
@@ -35,5 +39,34 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLogin()
+    {
+    // show the form
+        return View::make('login');
+    }
+
+    public function doLogin()
+    {
+    // show the form
+        $email = Input::get('email');
+        $password = Input::get('password');
+
+        $user = DB::table('users')->where('email', $email)->first();
+        if($user == null)
+        {
+            return redirect()->back()->with('alert', 'Failed to login!');
+        }
+        else {
+            if (Hash::check($password,$user->password)) {
+                echo 'You are login as : '.$user->email;
+                return View::make('welcome');
+            }
+            else {
+                return redirect()->back()->with('alert', 'Wrong password!');
+            }
+        }
+      
     }
 }
