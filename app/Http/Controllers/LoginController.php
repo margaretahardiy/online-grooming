@@ -8,6 +8,7 @@ use View;
 use Illuminate\Support\Facades\Input;
 use DB;
 use Hash;
+use Session;
 
 class LoginController extends Controller
 {
@@ -61,6 +62,7 @@ class LoginController extends Controller
         else {
             if (Hash::check($password,$user->password)) {
                 echo 'You are login as : '.$user->email;
+                Session::put('session-user', $user);
                 return View::make('welcome');
             }
             else {

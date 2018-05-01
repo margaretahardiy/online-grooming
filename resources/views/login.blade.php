@@ -12,3 +12,5 @@
     @endif
   </div>
 </form>
+
+<a href="{{ url('/register') }}">Sign Up</a>

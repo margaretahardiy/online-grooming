@@ -18,8 +18,27 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email',320);
             $table->string('password');
+            $table->string('mobile_number')->nullable();
+            $table->string('address')->nullable();
+            $table->string('home_number')->nullable();
+            $table->string('work_number')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('dogs', function (Blueprint$table)
+        {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('breed');
+            $table->date('date_of_birth');
+            $table->timestamps();
+        });
+
+        Schema::table('dogs', function (Blueprint $table) {
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+        });              
+
     }
 
     /**
