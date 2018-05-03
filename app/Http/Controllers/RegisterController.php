@@ -76,20 +76,27 @@ class RegisterController extends Controller
     public function showRegister()
     {
     // show the form
-        return View::make('register');
+        return View::make('register2');
     }
 
     public function doRegister()
     {
         $user = new User;
+        $user->name = Input::get('name');
         $user->email = Input::get('email');
         $user->password = Hash::make(Input::get('password'));
-        $user->name = Input::get('name');
+        $password = Input::get('password');
+        $confirmPassword = Input::get('confirm-password');
 
-        Session::put('session-user', $user);
-        $user->save();
-        echo 'You are login as : '.$user->email;
-        return View::make('welcome');
+        if ($password == $confirmPassword) {
+            Session::put('session-user', $user);
+            $user->save();
+            echo 'You are login as : '.$user->email;
+            return View::make('welcome');
+        }
+       else {
+        return redirect()->back()->with('alert', 'Not match!');
+       }
     }
 
 }
