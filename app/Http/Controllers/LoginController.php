@@ -45,7 +45,7 @@ class LoginController extends Controller
     public function showLogin()
     {
     // show the form
-        return View::make('login');
+        return View::make('login2');
     }
 
     public function doLogin()
