@@ -92,7 +92,7 @@ class RegisterController extends Controller
             Session::put('session-user', $user);
             $user->save();
             echo 'You are login as : '.$user->email;
-            return View::make('welcome');
+            return View::make('welcome2');
         }
        else {
         return redirect()->back()->with('alert', 'Not match!');

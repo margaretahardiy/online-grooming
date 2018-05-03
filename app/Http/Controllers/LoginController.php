@@ -63,7 +63,7 @@ class LoginController extends Controller
             if (Hash::check($password,$user->password)) {
                 echo 'You are login as : '.$user->email;
                 Session::put('session-user', $user);
-                return View::make('welcome');
+                return View::make('welcome2');
             }
             else {
                 return redirect()->back()->with('alert', 'Wrong password!');
