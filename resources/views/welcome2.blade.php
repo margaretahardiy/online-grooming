@@ -67,6 +67,7 @@
 						<li><a class="scroll" href="#gallery">Gallery</a></li>
 						<li><a class="scroll" href="#contact" >Contact</a></li>
 						<li><a href="/profile">Profile</a></li>
+						<li><a href="/dogs">Dogs</a></li>
 					<!-- script-for-menu --> 
 					 <script>
 					   $( "span.menu" ).click(function() {

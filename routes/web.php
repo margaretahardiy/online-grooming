@@ -19,5 +19,5 @@
  Route::post('/profile', 'ProfileController@updateProfile');
  Route::get('/dogs', 'DogController@showDogList');
  Route::get('/welcome',  function (Request $request) {
-   return View::make('welcome');
+   return View::make('welcome2');
  });

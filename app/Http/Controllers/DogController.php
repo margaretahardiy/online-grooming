@@ -25,7 +25,11 @@ class DogController extends Controller
     */
     public function showDogList()
     {
-        return View::make('dogs');
+        $currentUser = Session::get('session-user');
+      
+        $dogs = DB::table('dogs')->where('user_id', $currentUser->id)->get();
+        return View::make('dogs')->with('dogs', $dogs);
     }
+
 
 }
