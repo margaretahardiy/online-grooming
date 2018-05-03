@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use View;
+use Illuminate\Support\Facades\Input;
+use Session;
+use Hash;
 
 class RegisterController extends Controller
 {
@@ -74,6 +77,19 @@ class RegisterController extends Controller
     {
     // show the form
         return View::make('register');
+    }
+
+    public function doRegister()
+    {
+        $user = new User;
+        $user->email = Input::get('email');
+        $user->password = Hash::make(Input::get('password'));
+        $user->name = Input::get('name');
+
+        Session::put('session-user', $user);
+        $user->save();
+        echo 'You are login as : '.$user->email;
+        return View::make('welcome');
     }
 
 }

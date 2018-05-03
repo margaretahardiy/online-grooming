@@ -1,7 +1,6 @@
-<form id='register' action='register.php' method='post'
+<form id='register' action='/register' method='post'
     accept-charset='UTF-8'>
 <fieldset >
-
 <legend>Register</legend>
 <input type='hidden' name='submitted' id='submitted' value='1'/>
 <label for='name' >Your Full Name*: </label>
