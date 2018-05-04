@@ -46,7 +46,7 @@
 				  <div class="top-nav">
 					<span class="menu"><img src="images/menu.png" alt=""/></span>
 					<ul class="nav1">
-						<li><a href="index.html" class="active">Home</a></li>
+						<li><a href="/welcome" class="active">Home</a></li>
 						<li><a class="scroll" href="#about">About</a></li>
 						<li><a class="scroll" href="#services">Services</a></li>
 						<li><a class="scroll" href="#gallery">Gallery</a></li>
@@ -105,10 +105,12 @@
             @foreach ($dogs as $dog)
             <div class="col-md-4 ser-grid">
 					 <div class="view view-first">
+                     <a href="/dogs/{{ $dog->id }}">
 	                    <img src="images/s3.png"/>
 	                    <div class="mask">
 	                        <h2>Pets</h2>	                                              
 	                    </div>
+                        </a>
                     </div>
 					<h4>{{ $dog->name }}</h4>
 					<p>{{ $dog->breed }}</p>

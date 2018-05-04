@@ -21,3 +21,6 @@
  Route::get('/welcome',  function (Request $request) {
    return View::make('welcome2');
  });
+
+ Route::get('dogs/{id}','DogController@showDogInfo');
+ Route::post('dogs/{id}','DogController@updateDogInfo');

@@ -37,7 +37,7 @@
                         	<div class="form-top">
                         		<div class="form-top-left">
                         			<h3>Login to our site</h3>
-                            		<p>Enter your username and password to log in:</p>
+                            		<p>Enter your email address and password to log in:</p>
                         		</div>
                         		<div class="form-top-right">
                         			<i class="fa fa-lock"></i>

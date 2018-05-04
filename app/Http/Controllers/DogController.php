@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Dog;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use View;
@@ -29,6 +30,23 @@ class DogController extends Controller
       
         $dogs = DB::table('dogs')->where('user_id', $currentUser->id)->get();
         return View::make('dogs')->with('dogs', $dogs);
+    }
+
+    public function showDogInfo($id){
+        $dog = DB::table('dogs')->find($id);
+        return View::make('dogprofile')->with('dog', $dog);;
+    }  
+
+    public function updateDogInfo($id){
+        $dog = Dog::find($id);
+
+        $dog->name = Input::get('name');
+        $dog->breed = Input::get('breed');
+        $dog->date_of_birth = Input::get('dateofbirth');
+      
+        $dog->save();
+        echo 'Your dog info has been updated!';
+        return View::make('dogprofile')->with('dog', $dog);;
     }
 
 
