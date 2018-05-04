@@ -46,7 +46,7 @@
 				  <div class="top-nav">
 					<span class="menu"><img src="images/menu.png" alt=""/></span>
 					<ul class="nav1">
-						<li><a href="/welcome" class="active">Home</a></li>
+						<li><a href="/homepage" class="active">Home</a></li>
 						<li><a class="scroll" href="#about">About</a></li>
 						<li><a class="scroll" href="#services">Services</a></li>
 						<li><a class="scroll" href="#gallery">Gallery</a></li>

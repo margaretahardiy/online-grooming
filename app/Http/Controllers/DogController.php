@@ -8,9 +8,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use View;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Routing\Redirector;
 use Session;
 use Hash;
 use DB;
+use Illuminate\Support\Facades\Route;
 
 class DogController extends Controller
 {
@@ -24,14 +26,6 @@ class DogController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-    public function showDogList()
-    {
-        $currentUser = Session::get('session-user');
-      
-        $dogs = DB::table('dogs')->where('user_id', $currentUser->id)->get();
-        return View::make('dogs')->with('dogs', $dogs);
-    }
-
     public function showDogInfo($id){
         $dog = DB::table('dogs')->find($id);
         return View::make('dogprofile')->with('dog', $dog);;
@@ -45,8 +39,9 @@ class DogController extends Controller
         $dog->date_of_birth = Input::get('dateofbirth');
       
         $dog->save();
-        echo 'Your dog info has been updated!';
-        return View::make('dogprofile')->with('dog', $dog);;
+        $currentUser = Session::get('session-user');
+        $dogs = DB::table('dogs')->where('user_id', $currentUser->id)->get();
+        return redirect('homepage');
     }
 
     public function showInsertDog() {
@@ -63,7 +58,7 @@ class DogController extends Controller
         $dog->user_id = $currentUser->id;
 
         $dog->save();
-        return View::make('welcome2');
+        return redirect('homepage');
     }
 
 }

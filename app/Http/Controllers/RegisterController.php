@@ -91,8 +91,8 @@ class RegisterController extends Controller
         if ($password == $confirmPassword) {
             Session::put('session-user', $user);
             $user->save();
-            echo 'You are login as : '.$user->email;
-            return View::make('welcome2');
+            echo 'You are login as : '.$user->name;
+            return redirect('homepage');
         }
        else {
         return redirect()->back()->with('alert', 'Not match!');

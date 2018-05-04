@@ -44,27 +44,27 @@
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Full name</label>
                                         <h4>Your full name</h4>
-			                        	<input type="text" name="form-username" class="form-username form-control" id="form-username" value= {{$user->name}}>
+			                        	<input type="text" name="name" class="form-username form-control" id="form-username" value= "{{$user->name}}">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Home address</label>
                                          <h4>Your home address</h4>
-			                        	<input type="text" name="" class="form-password form-control" id="form-password" value = {{$user->address}}> 
+			                        	<input type="text" name="address" class="form-password form-control" id="form-password" value = "{{$user->address}}"> 
 			                        </div>
 			                         <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Mobile number</label>
                                          <h4>Your mobile number</h4>
-			                        	<input type="text" name="mobile" class="form-password form-control" id="form-password" value = {{$user->mobile_number}}>
+			                        	<input type="text" name="mobile" class="form-password form-control" id="form-password" value = "{{$user->mobile_number}}">
 			                        </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-password">Home number</label>
                                          <h4>Your home number</h4>
-                                        <input type="text" name="home" class="form-password form-control" id="form-password" value = {{$user->home_number}}>
+                                        <input type="text" name="home" class="form-password form-control" id="form-password" value = "{{$user->home_number}}">
                                     </div>
                                     <div class="form-group">
                                          <h4>Your work number</h4>
                                         <label class="sr-only" for="form-password">Work number</label>
-                                        <input type="text" name="work" class="form-password form-control" id="form-password" value = {{$user->work_number}}>
+                                        <input type="text" name="work" class="form-password form-control" id="form-password" value = "{{$user->work_number}}">
                                     </div>
                                     <button type="submit" class="btn">Confirm</button>
 			                    </form>

@@ -44,17 +44,17 @@
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Name</label>
                                         <h4>Name</h4>
-			                        	<input type="text" name="name" class="form-username form-control" id="form-username" value= {{$dog->name}} >
+			                        	<input type="text" name="name" class="form-username form-control" id="form-username" value= "{{$dog->name}}" >
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Breed</label>
                                          <h4>Breed</h4>
-			                        	<input type="text" name="breed" class="form-password form-control" id="form-password" value= {{$dog->breed}}> 
+			                        	<input type="text" name="breed" class="form-password form-control" id="form-password" value= "{{$dog->breed}}"> 
 			                        </div>
 			                         <div class="form-group">
 			                        	<label class="sr-only" for="form-password">DateOfBirth</label>
                                          <h4>Date Of Birth</h4>
-			                        	<input type="text" name="dateofbirth" class="form-password form-control" id="form-password" value= {{$dog->date_of_birth}}>
+			                        	<input type="text" name="dateofbirth" class="form-password form-control" id="form-password" value= "{{$dog->date_of_birth}}">
 			                        </div>
                                     <button type="submit" class="btn">Update</button>
 			                    </form>
