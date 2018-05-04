@@ -49,5 +49,21 @@ class DogController extends Controller
         return View::make('dogprofile')->with('dog', $dog);;
     }
 
+    public function showInsertDog() {
+        return View::make('insertdog');
+    }
+
+    public function saveDogInfo() {
+        $dog = new Dog;
+        $dog->name = Input::get('name');
+        $dog->breed = Input::get('breed');
+        $dog->date_of_birth = Input::get('dateofbirth');
+
+        $currentUser = Session::get('session-user');
+        $dog->user_id = $currentUser->id;
+
+        $dog->save();
+        return View::make('welcome2');
+    }
 
 }

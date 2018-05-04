@@ -24,3 +24,5 @@
 
  Route::get('dogs/{id}','DogController@showDogInfo');
  Route::post('dogs/{id}','DogController@updateDogInfo');
+ Route::get('insert-dog','DogController@showInsertDog');
+ Route::post('insert-dog','DogController@saveDogInfo');
