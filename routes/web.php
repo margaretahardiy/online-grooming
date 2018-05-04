@@ -11,7 +11,7 @@
 |
 */
 
- Route::get('/', 'LoginController@showLogin');
+ Route::get('/', 'LoginController@showInitialPage');
  Route::get('/login', 'LoginController@showLogin');
  Route::post('/login', 'LoginController@doLogin');
  Route::get('/register', 'RegisterController@showRegister');

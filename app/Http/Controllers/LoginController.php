@@ -44,8 +44,18 @@ class LoginController extends Controller
 
     public function showLogin()
     {
-    // show the form
         return View::make('login2');
+    }
+
+    public function showInitialPage()
+    {
+    // show the form
+        if (Session::get('session-user') != null ){
+            return redirect('homepage');
+        }
+        else{
+            return View::make('login2');
+        }
     }
 
     public function doLogin()

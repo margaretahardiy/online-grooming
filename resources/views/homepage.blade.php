@@ -201,6 +201,16 @@
 			<div class="ser-top">
 				<h3>Your Dogs</h3>
 			</div>
+			<div class="col-md-4 ser-grid">
+					 <div class="view view-first">
+					 <a href="/insert-dog">
+	                    <img src="images/add.png"/>
+	                    <div class="mask">
+	                        <h2>Add more dog</h2>	                                              
+	                    </div>
+					</a>
+                    </div>
+			</div>			
 			<div class="ser-bottom">
             @foreach ($dogs as $dog)
             <div class="col-md-4 ser-grid">
