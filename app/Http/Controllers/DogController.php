@@ -13,6 +13,8 @@ use Session;
 use Hash;
 use DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 class DogController extends Controller
 {
@@ -31,16 +33,23 @@ class DogController extends Controller
         return View::make('dogprofile')->with('dog', $dog);;
     }  
 
-    public function updateDogInfo($id){
+    public function updateDogInfo($id, Request $request){
         $dog = Dog::find($id);
 
         $dog->name = Input::get('name');
         $dog->breed = Input::get('breed');
         $dog->date_of_birth = Input::get('dateofbirth');
       
-        $dog->save();
+  
         $currentUser = Session::get('session-user');
         $dogs = DB::table('dogs')->where('user_id', $currentUser->id)->get();
+        $img = $request->photo;
+        if($img != null) {
+            $filename = $img->getClientOriginalName();
+            Storage::disk('public') -> put($filename, file_get_contents($img -> getRealPath()));
+            $dog->photo = $filename;
+        }
+        $dog->save();
         return redirect('homepage');
     }
 

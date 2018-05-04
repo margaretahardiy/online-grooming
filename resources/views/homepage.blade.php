@@ -216,7 +216,7 @@
             <div class="col-md-4 ser-grid">
 					 <div class="view view-first">
                      <a href="/dogs/{{ $dog->id }}">
-	                    <img src="images/s3.png"/>
+	                    <img src="<?php echo asset("storage/$dog->photo")?>" width="200" height="200" class="circular--square"/>
 	                    <div class="mask">
 	                        <h2>{{ $dog->name }}</h2>	                                              
 	                    </div>
