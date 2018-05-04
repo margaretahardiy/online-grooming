@@ -57,7 +57,7 @@ class DogController extends Controller
         return View::make('insertdog');
     }
 
-    public function saveDogInfo() {
+    public function saveDogInfo(Request $request) {
         $dog = new Dog;
         $dog->name = Input::get('name');
         $dog->breed = Input::get('breed');
@@ -65,6 +65,13 @@ class DogController extends Controller
 
         $currentUser = Session::get('session-user');
         $dog->user_id = $currentUser->id;
+
+        $img = $request->photo;
+        if($img != null) {
+            $filename = $img->getClientOriginalName();
+            Storage::disk('public') -> put($filename, file_get_contents($img -> getRealPath()));
+            $dog->photo = $filename;
+        }
 
         $dog->save();
         return redirect('homepage');

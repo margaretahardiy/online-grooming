@@ -40,7 +40,7 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="POST" class="/insert-dog" class>
+			                    <form role="form" action="" method="POST" class="/insert-dog" enctype="multipart/form-data">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Name</label>
                                         <h4>Name</h4>
@@ -55,6 +55,11 @@
 			                        	<label class="sr-only" for="form-password">DateOfBirth</label>
                                          <h4>Date Of Birth</h4>
 			                        	<input type="text" name="dateofbirth" class="form-password form-control" id="form-password">
+			                        </div>
+                                    <div class="form-group">
+			                        	<label class="sr-only" for="form-password"></label>
+                                         <h4>Photo</h4>
+			                        	 <input type="file" name="photo"/>
 			                        </div>
                                     <button type="submit" class="btn">Update</button>
 			                    </form>
