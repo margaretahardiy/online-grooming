@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('breed');
+            $table->string('photo')->nullable();
             $table->date('date_of_birth');
             $table->timestamps();
         });
@@ -37,8 +38,22 @@ class CreateUsersTable extends Migration
         Schema::table('dogs', function (Blueprint $table) {
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-        });              
+        });     
+        
+        Schema::create('appointments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('comment')->nullable();
+            $table->datetime('date_time')->nullable();
+        });
 
+
+        Schema::table('appointments', function (Blueprint $table) {
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unsignedInteger('dog_id');
+            $table->foreign('dog_id')->references('id')->on('dogs');
+        });  
     }
 
     /**

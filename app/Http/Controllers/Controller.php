@@ -18,7 +18,9 @@ class Controller extends BaseController
     {
         $currentUser = Session::get('session-user');
         $dogs = DB::table('dogs')->where('user_id', $currentUser->id)->get();
-        return View::make('homepage')->with('dogs', $dogs);
+        $appointments = DB::table('appointments')->where('user_id', $currentUser->id)->get();
+        
+        return View::make('homepage')->with('dogs', $dogs)->with('appointments', $appointments);
     }
 }
 

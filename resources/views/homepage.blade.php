@@ -363,27 +363,22 @@
 				<h3>Your Appointments</h3>
 			</div>
 			<div class="ser-bottom">
-				<div class="col-md-4 ser-grid">
+			@foreach ($appointments as $appointment)
+            <div class="col-md-4 ser-grid">
 					 <div class="view view-first">
-	                   	<img src="images/dog1.png" />
-	                    <a href="info/DogProfile.html">
+                     <a href="/dogs/{{ $dog->id }}">
+	                    <img src="<?php echo asset("storage/$appointment->photo")?>" width="200" height="200" class="circular--square"/>
 	                    <div class="mask">
-	                        <h2>Puppy</h2>	                                              
-	                    </div></a>
+	                        <h2>{{ $appointment->datetime }}</h2>	                                              
+	                    </div>
+                        </a>
                     </div>
+					<h4>{{ $appointment->datetime }}</h4>
 				</div>
+            @endforeach
 				<div class="col-md-4 ser-grid">
 					<div class="view view-first">
-	                    <img src="images/dog2.png" />
-	                    <a href="info/DogProfile.html">
-	                    <div class="mask">
-	                        <h2>Nick</h2>	                                              
-	                    </div></a>
-                    </div>
-				</div>
-				<div class="col-md-4 ser-grid">
-					<div class="view view-first">
-						<a href="#services">
+						<a href="/new-appointment">
 	                    <img src="images/add.png" />
 	                   	</a>
                     </div>
