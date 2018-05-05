@@ -44,7 +44,7 @@ class LoginController extends Controller
 
     public function showLogin()
     {
-        return View::make('login2');
+        return View::make('login');
     }
 
     public function showInitialPage()
@@ -54,7 +54,7 @@ class LoginController extends Controller
             return redirect('homepage');
         }
         else{
-            return View::make('login2');
+            return View::make('login');
         }
     }
 

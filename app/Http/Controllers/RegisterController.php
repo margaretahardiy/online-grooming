@@ -76,7 +76,7 @@ class RegisterController extends Controller
     public function showRegister()
     {
     // show the form
-        return View::make('register2');
+        return View::make('register');
     }
 
     public function doRegister()

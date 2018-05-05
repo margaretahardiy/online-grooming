@@ -31,7 +31,7 @@ class ProfileController extends Controller
         $currentUser = User::find($user->id);
 
         echo 'You live at: '.$currentUser->address;
-        return View::make('profile2')->with('user', $currentUser);
+        return View::make('profile')->with('user', $currentUser);
     }
 
     public function updateProfile()
@@ -47,7 +47,7 @@ class ProfileController extends Controller
 
         $currentUser->save();
         echo 'Your profile has been updated!';
-        return View::make('profile2')->with('user', $currentUser);
+        return View::make('profile')->with('user', $currentUser);
     }
 
 
