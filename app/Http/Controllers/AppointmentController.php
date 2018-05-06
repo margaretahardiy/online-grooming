@@ -14,6 +14,7 @@ use Hash;
 use DB;
 use Request;
 use DateTime;
+use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
@@ -36,6 +37,45 @@ class AppointmentController extends Controller
         $dogs = DB::table('dogs')->where('user_id', $currentUser->id)->get();
 
         return View::make('createappointment')->with('dogs', $dogs);
+    }
+
+    public function showEditAppointment($id)
+    {
+        $appointment = Appointment::find($id);
+        $date = Carbon::parse($appointment->date_time)->format('Y-m-d');
+
+        $bookedTimes = DB::table('appointments')->whereDate('date_time', $date)->get();
+            // date_default_timezone_set('America/New_York');
+            $time1 = new DateTime($date . 'T09:00:00');
+            $time2 = new DateTime($date  . 'T10:30:00');
+            $time3 = new DateTime($date . 'T13:00:00');
+            $time4 = new DateTime($date . 'T14:30:00');
+            $time5 = new DateTime($date . 'T16:30:00');
+           
+            $schedules = array($time1, $time2, $time3,$time4, $time5);
+            $availableTimes = array();
+            $result = "";
+            $i = 0;
+            foreach($schedules as $schedule) {
+                $flag = true;
+                foreach($bookedTimes as $bookedTime) {
+                    // $result = $bookedTime->date_time;
+                   
+                    $timeSchedule = $schedule->format('Y-m-d H:i:s');
+                    $timeBooked = $bookedTime->date_time;
+                      
+                    if ($timeSchedule == $timeBooked) {
+                        $flag = false;
+                        break;
+                    }
+                }
+
+                if ($flag == true) {
+                    array_push($availableTimes,$schedule->format('Y-m-d H:i:s'));
+                }
+            }
+
+        return View::make('updateAppointment')->with('appointment', $appointment)->with('times', $availableTimes);
     }
 
     public function checkAvailableTime($date) {
@@ -101,5 +141,13 @@ class AppointmentController extends Controller
     }
 
 
+    public function updateAppointment($id, Request $request)
+    {
+        $appointment = Appointment::find($id);
+        $request = Input::all();
+        $appointment->date_time = $request["schedules"];
 
+        $appointment->save();
+        return redirect('homepage');
+    }
 }

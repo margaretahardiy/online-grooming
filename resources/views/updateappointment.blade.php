@@ -24,7 +24,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1> Insert your appointment here!</h1>
+                            <h1> Reschedule your appointment here!</h1>
                             <div class="description">
                             </div>
                         </div>
@@ -40,45 +40,22 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="POST" class = "/new-appointment"  >
+			                    <form role="form" action="" method="POST" class = "/edit-appointment"  >
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Date</label>
                                         <h4>Date</h4>
-			                        	<input type="date" name="date" class="form-username form-control" id="form-username">
+			                        	<input type="date" name="date" class="form-username form-control" id="form-username" value= {{ $appointment->date_time }}>
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Time</label>
                                          <h4>Time</h4>
                                          <select id="schedules" name="schedules">
-                                         <option value="0">- Select Time -</option>
-                                        </select>
-			                        </div>
-                                    <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Dog</label>
-                                         <h4>Dog</h4>
-                                         <select id="dogs" name="dogs">
-                                         <option value="0">- Select Your Dog -</option>
-                                         @foreach ($dogs as $dog)
-                                         <option value="{{ $dog->id }}"> {{ $dog->name }}</option>
+                                         <option value="{{ $appointment->date_time }}">{{ \Carbon\Carbon::parse($appointment->date_time)->format("H:i") }} </option>
+                                         @foreach ($times as $time)
+                                         <option value="{{ $time }}"> {{ \Carbon\Carbon::parse($time)->format("H:i") }}</option>
 			                             @endforeach
                                         </select>
-			                        </div>
-                                    <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Service</label>
-                                         <h4>Service</h4>
-                                         <select id="services" name="services">
-                                         <option value="0">- Select Service -</option>
-                                         <option value="Wash Only"> Wash Only</option>
-                                         <option value="Wash and Nail Clipping"> Wash and Nail Clipping </option>
-                                         <option value="Deluxe Grooming"> Deluxe Grooming </option>
-                                        </select>
-			                        </div>
-                                    
-                                    <div class="form-group">
-			                        	<label class="sr-only" for="form-password">General Comment</label>
-                                         <h4>General Comment</h4>
-			                        	<input type="text" name="comment" class="form-password form-control" id="form-password"> 
-			                        </div>
+			                        </div>                
                                     <button type="submit" class="btn">Update</button>
 			                    </form>
 		                    </div>
@@ -107,7 +84,7 @@
                 // msg['msg'][0]['date'];  
               //  alert(msg['msg'][0]['date_time']);
                 if (len == 0) {
-                    alert("No available time. Please select another date!")
+                    alert("No available time left. Please select another date!")
                 }
                 // alert(msg['msg']);
                 $('#schedules').empty();

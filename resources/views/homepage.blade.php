@@ -366,7 +366,7 @@
 			@foreach ($appointments as $appointment)
             <div class="col-md-4 ser-grid">
 					 <div class="view view-first">
-                     <a href="/dogs/{{ $dog->id }}">
+                     <a href="/edit-appointment/{{ $appointment->id }}">
 	                   <img src="<?php echo asset("storage/{$appointment->dog->photo}")?>" width="200" height="200" class="circular--square"/>
 
 	                    <div class="mask">

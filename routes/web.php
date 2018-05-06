@@ -31,3 +31,5 @@
  Route::get('/new-appointment','AppointmentController@showNewAppointment');
  Route::get('/appointment-date/{date}', 'AppointmentController@checkAvailableTime');
  Route::post('/new-appointment','AppointmentController@createNewAppointment');
+ Route::get('/edit-appointment/{id}','AppointmentController@showEditAppointment');
+ Route::post('/edit-appointment/{id}','AppointmentController@updateAppointment');
