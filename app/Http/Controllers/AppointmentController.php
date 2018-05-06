@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Appointment;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -32,7 +33,9 @@ class AppointmentController extends Controller
         $user = Session::get('session-user');
         $currentUser = User::find($user->id);
 
-        return View::make('createappointment');
+        $dogs = DB::table('dogs')->where('user_id', $currentUser->id)->get();
+
+        return View::make('createappointment')->with('dogs', $dogs);
     }
 
     public function checkAvailableTime($date) {
@@ -71,10 +74,24 @@ class AppointmentController extends Controller
                 'msg' => $availableTimes
             );
             return \Response::json($response);
-            
-        // }
-
     }
+
+    public function createNewAppointment()
+    {
+        $user = Session::get('session-user');
+        $currentUser = User::find($user->id);
+        $request = Input::all();
+        $appointment = new Appointment();
+        $appointment->date_time = $request["schedules"];
+        $appointment->comment = $request["comment"] ;
+        var_dump($request);
+        $appointment->dog_id =  $request["dogs"];
+        $appointment->user_id = $currentUser->id;
+        $appointment->service = $request["services"];
+
+       $appointment->save();
+    }
+
 
 
 }

@@ -40,7 +40,7 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="POST">
+			                    <form role="form" action="" method="POST" class = "/new-appointment"  >
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Date</label>
                                         <h4>Date</h4>
@@ -54,6 +54,16 @@
                                         </select>
 			                        </div>
                                     <div class="form-group">
+			                        	<label class="sr-only" for="form-password">Dog</label>
+                                         <h4>Dog</h4>
+                                         <select id="dogs" name="dogs">
+                                         <option value="0">- Select Your Dog -</option>
+                                         @foreach ($dogs as $dog)
+                                         <option value="{{ $dog->id }}"> {{ $dog->name }}</option>
+			                             @endforeach
+                                        </select>
+			                        </div>
+                                    <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Service</label>
                                          <h4>Service</h4>
                                          <select id="services" name="services">
@@ -63,6 +73,7 @@
                                          <option value="Deluxe Grooming"> Deluxe Grooming </option>
                                         </select>
 			                        </div>
+                                    
                                     <div class="form-group">
 			                        	<label class="sr-only" for="form-password">General Comment</label>
                                          <h4>General Comment</h4>
@@ -93,8 +104,8 @@
             url: "/appointment-date/" + this.value,
             success: function(msg) {
                 var len = msg['msg'].length;
-                msg['msg'][0]['date'];
-                
+                msg['msg'][0]['date'];  
+                $('#schedules').empty();
                  for( var i = 0; i<len; i++){
                     // alert(len); 
                     var date = msg['msg'][i]['date'];
@@ -105,10 +116,8 @@
                     var formattedM = ("0" + m).slice(-2);
                     var time = formattedH + ":" + formattedM;
 
-                    $('#schedules').append($("<option></option>").attr('value', newDate).text(time));
+                    $('#schedules').append($("<option></option>").attr('value', date).text(time));
                 }
-               // alert(msg['msg'][0]['date']); 
-               // $("#ajaxResponse").append("<div>"+msg+"</div>");
             }
         });
         });

@@ -30,3 +30,4 @@
  Route::post('insert-dog','DogController@saveDogInfo');
  Route::get('/new-appointment','AppointmentController@showNewAppointment');
  Route::get('/appointment-date/{date}', 'AppointmentController@checkAvailableTime');
+ Route::post('/new-appointment','AppointmentController@createNewAppointment');

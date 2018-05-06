@@ -367,13 +367,14 @@
             <div class="col-md-4 ser-grid">
 					 <div class="view view-first">
                      <a href="/dogs/{{ $dog->id }}">
-	                    <img src="<?php echo asset("storage/$appointment->photo")?>" width="200" height="200" class="circular--square"/>
+	                   <img src="<?php echo asset("storage/{$appointment->dog->photo}")?>" width="200" height="200" class="circular--square"/>
+
 	                    <div class="mask">
-	                        <h2>{{ $appointment->datetime }}</h2>	                                              
+	                        <h2>{{ $appointment->dog->name }}</h2>	                                              
 	                    </div>
                         </a>
                     </div>
-					<h4>{{ $appointment->datetime }}</h4>
+					<h4>{{ \Carbon\Carbon::parse($appointment->date_time)->format('d/m/Y h:i A') }}</h4>
 				</div>
             @endforeach
 				<div class="col-md-4 ser-grid">

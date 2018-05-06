@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Session;
 use DB;
 use View;
+use App\Appointment;
 
 class Controller extends BaseController
 {
@@ -18,7 +19,8 @@ class Controller extends BaseController
     {
         $currentUser = Session::get('session-user');
         $dogs = DB::table('dogs')->where('user_id', $currentUser->id)->get();
-        $appointments = DB::table('appointments')->where('user_id', $currentUser->id)->get();
+        // $appointments = DB::table('appointments')->where('user_id', $currentUser->id)->get();
+        $appointments = Appointment::with('dog')->where('user_id', $currentUser->id)->get();
         
         return View::make('homepage')->with('dogs', $dogs)->with('appointments', $appointments);
     }
