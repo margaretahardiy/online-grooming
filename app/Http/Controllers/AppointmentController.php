@@ -60,11 +60,10 @@ class AppointmentController extends Controller
                 $flag = true;
                 foreach($bookedTimes as $bookedTime) {
                     // $result = $bookedTime->date_time;
-                    if($i == 0) {
-                        $timeSchedule = $schedule->format('Y-m-d H:i:s');
-                        $timeBooked = $bookedTime->date_time;
-                        $result =  $timeSchedule;
-                    }
+                   
+                    $timeSchedule = $schedule->format('Y-m-d H:i:s');
+                    $timeBooked = $bookedTime->date_time;
+                      
                     if ($timeSchedule == $timeBooked) {
                         $flag = false;
                         break;
