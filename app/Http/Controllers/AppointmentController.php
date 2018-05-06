@@ -96,6 +96,8 @@ class AppointmentController extends Controller
         $appointment->service = $request["services"];
 
        $appointment->save();
+
+       return redirect('homepage');
     }
 
 
