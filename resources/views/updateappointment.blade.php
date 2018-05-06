@@ -41,7 +41,19 @@
                             </div>
                             <div class="form-bottom">
 			                    <form role="form" action="" method="POST" class = "/edit-appointment"  >
-			                    	<div class="form-group">
+			                    	
+                                    <div class="form-group">
+			                        	<label class="sr-only" for="form-password">General Comment</label>
+                                         <h4>Name</h4>
+			                        	<input type="text" name="name" class="form-password form-control" id="form-password" value="{{ $appointment->dog->name }}" disabled> 
+			                        </div>
+                                    <div class="form-group">
+			                        	<label class="sr-only" for="form-password">General Comment</label>
+                                         <h4>Service</h4>
+			                        	<input type="text" name="service" class="form-password form-control" id="form-password" value="{{ $appointment->service }}" disabled> 
+			                        </div>
+                                    
+                                    <div class="form-group">
 			                    		<label class="sr-only" for="form-username">Date</label>
                                         <h4>Date</h4>
 			                        	<input type="date" name="date" class="form-username form-control" id="form-username" value= {{ $appointment->date_time }}>
