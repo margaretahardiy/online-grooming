@@ -104,7 +104,9 @@
             url: "/appointment-date/" + this.value,
             success: function(msg) {
                 var len = msg['msg'].length;
-                msg['msg'][0]['date'];  
+                // msg['msg'][0]['date'];  
+              //  alert(msg['msg'][0]['date_time']);
+                alert(msg['msg']);
                 $('#schedules').empty();
                  for( var i = 0; i<len; i++){
                     // alert(len); 

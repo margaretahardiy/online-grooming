@@ -51,14 +51,21 @@ class AppointmentController extends Controller
             $time4 = new DateTime($date . 'T14:30:00');
             $time5 = new DateTime($date . 'T16:30:00');
 
-            // var_dump($date);
+           
             $schedules = array($time1, $time2, $time3,$time4, $time5);
             $availableTimes = array();
-
+            $result = "";
+            $i = 0;
             foreach($schedules as $schedule) {
                 $flag = true;
                 foreach($bookedTimes as $bookedTime) {
-                    if ($bookedTime == $schedule) {
+                    // $result = $bookedTime->date_time;
+                    if($i == 0) {
+                        $timeSchedule = $schedule->format('Y-m-d H:i:s');
+                        $timeBooked = $bookedTime->date_time;
+                        $result =  $timeSchedule;
+                    }
+                    if ($timeSchedule == $timeBooked) {
                         $flag = false;
                         break;
                     }
