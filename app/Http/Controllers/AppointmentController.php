@@ -150,4 +150,9 @@ class AppointmentController extends Controller
         $appointment->save();
         return redirect('homepage');
     }
+
+    public function destroy($id) {
+        Appointment::destroy($id);
+        return redirect('homepage');
+    }
 }

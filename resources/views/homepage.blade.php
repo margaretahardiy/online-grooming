@@ -375,6 +375,9 @@
                         </a>
                     </div>
 					<h4>{{ \Carbon\Carbon::parse($appointment->date_time)->format('d/m/Y h:i A') }}</h4>
+					<a href="/delete-appointment/{{ $appointment->id }}">
+					<h4>Cancel</h4>
+
 				</div>
             @endforeach
 				<div class="col-md-4 ser-grid">
