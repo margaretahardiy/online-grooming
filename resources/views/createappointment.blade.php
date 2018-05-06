@@ -106,7 +106,10 @@
                 var len = msg['msg'].length;
                 // msg['msg'][0]['date'];  
               //  alert(msg['msg'][0]['date_time']);
-                alert(msg['msg']);
+                if (len == 0) {
+                    alert("No available time left. Please select another date!")
+                }
+                // alert(msg['msg']);
                 $('#schedules').empty();
                  for( var i = 0; i<len; i++){
                     // alert(len); 
