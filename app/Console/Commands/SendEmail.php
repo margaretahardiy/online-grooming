@@ -7,6 +7,10 @@ use Illuminate\Console\Command;
 use App\User;
 use Mail;
 use App\Mail\AppointmentReminder;
+use App\Appointment;
+use \DateTime;
+use \DateTimeZone;
+
 
 class SendEmail extends Command
 {
@@ -45,8 +49,31 @@ class SendEmail extends Command
         // $currentUser->name = "M";
         // $currentUser->save();
         // echo 'Something went wrong!';
+        $appointments = Appointment::all();
+        foreach($appointments as $appointment) {
+            date_default_timezone_set("Australia/Melbourne");   
+            $dateappointment  = (new DateTime($appointment->date_time))->format("Y-m-d h:i:s");
+            $time = strtotime( $dateappointment);
+            
+            $day = new DateTime(); 
+            $datenow = $day->format("Y-m-d h:i:s");
 
-          Mail::to('margareta.hardi@gmail.com')->send(new AppointmentReminder);
+            $now = strtotime($datenow);
+        
+            $this->info('now' .$now. ' '.$datenow);
+            $this->info('time'.$time. ' '. $appointment->date_time);
+            $this->info('nojjw' .round(($time-$now)/ 3600));
+            
+              if (round(($time-$now)/ 3600) == 24 && $appointment->send_reminder == false) {
+                    $email = $appointment->user->email;
+                    Mail::to($email)->send(new AppointmentReminder($now, $time));
+                    // $currentappointment = Appointment::find($appointment->id);
+                    $appointment->send_reminder = 1;
+                    $appointment->save();
+                 }
+        }
+        // Mail::to($email)->send(new AppointmentReminder);
+        //  Mail::to('margareta.hardi@gmail.com')->send(new AppointmentReminder);
         // $this->info('Test has fired.');
     }
 }

@@ -92,7 +92,7 @@ class AppointmentController extends Controller
             $time4 = new DateTime($date . 'T14:30:00');
             $time5 = new DateTime($date . 'T16:30:00');
 
-           
+          
             $schedules = array($time1, $time2, $time3,$time4, $time5);
             $availableTimes = array();
             $result = "";
@@ -155,14 +155,5 @@ class AppointmentController extends Controller
     public function destroy($id) {
         Appointment::destroy($id);
         return redirect('homepage');
-    }
-
-    public function sendEmailReminder () {
-            //check all appointment
-            //get 24 hrs
-            //send email
-
-            Mail::to('margareta.hardi@gmail.com')->send(new AppointmentReminder);
-
     }
 }
