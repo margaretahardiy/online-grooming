@@ -13,9 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        '\App\Console\Commands\SendEmail'
     ];
-
     /**
      * Define the application's command schedule.
      *
@@ -26,6 +25,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->command('send:email')->everyMinute()->timezone('Australia/Melbourne');
     }
 
     /**

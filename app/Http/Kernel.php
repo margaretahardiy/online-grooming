@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http;
+use App\Console\Commands\SendEmail;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -13,6 +14,11 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+
+    protected $commands = [
+        '\App\Console\Commands\SendEmail'
+    ];
+
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
@@ -57,4 +63,9 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
+
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('command:name')->everyMinute();
+    }
 }

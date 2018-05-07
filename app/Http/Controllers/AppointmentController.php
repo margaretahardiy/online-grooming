@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Appointment;
+use Aopp\Mail\AppointmentReminder;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -154,5 +155,14 @@ class AppointmentController extends Controller
     public function destroy($id) {
         Appointment::destroy($id);
         return redirect('homepage');
+    }
+
+    public function sendEmailReminder () {
+            //check all appointment
+            //get 24 hrs
+            //send email
+
+            Mail::to('margareta.hardi@gmail.com')->send(new AppointmentReminder);
+
     }
 }
