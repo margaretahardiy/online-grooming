@@ -44,6 +44,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('comment')->nullable();
             $table->datetime('date_time')->nullable();
+            $table->tinyInteger('send_reminder');
         });
 
 

@@ -135,6 +135,7 @@ class AppointmentController extends Controller
         $appointment->dog_id =  $request["dogs"];
         $appointment->user_id = $currentUser->id;
         $appointment->service = $request["services"];
+        $appointment->send_reminder = 0;
 
        $appointment->save();
 
@@ -147,6 +148,7 @@ class AppointmentController extends Controller
         $appointment = Appointment::find($id);
         $request = Input::all();
         $appointment->date_time = $request["schedules"];
+        $appointment->send_reminder = 0;
 
         $appointment->save();
         return redirect('homepage');
