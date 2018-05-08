@@ -77,7 +77,7 @@ class LoginController extends Controller
                 return redirect('homepage');
             }
             else {
-                return redirect()->back()->with('alert', 'Wrong password!');
+                return redirect()->back()->with('alert', 'Login Failed! Please try again ....');
             }
         }
       

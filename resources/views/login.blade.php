@@ -32,6 +32,13 @@
                             </div>
                         </div>
                     </div>
+                    @if (session('alert'))
+                    <div class="row">
+                       <div class="alert alert-danger">
+                        <strong>Wrong Password!</strong>
+                        </div>
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
