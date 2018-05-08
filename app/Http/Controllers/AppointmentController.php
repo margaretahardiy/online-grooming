@@ -44,7 +44,7 @@ class AppointmentController extends Controller
     {
         $appointment = Appointment::find($id);
         $date = Carbon::parse($appointment->date_time)->format('Y-m-d');
-
+        $user = Session::get('session-user');
         $bookedTimes = DB::table('appointments')->whereDate('date_time', $date)->get();
             // date_default_timezone_set('America/New_York');
             $time1 = new DateTime($date . 'T09:00:00');
@@ -76,7 +76,7 @@ class AppointmentController extends Controller
                 }
             }
 
-        return View::make('updateAppointment')->with('appointment', $appointment)->with('times', $availableTimes);
+        return View::make('updateAppointment')->with('appointment', $appointment)->with('times', $availableTimes)->with('user', $user);
     }
 
     public function checkAvailableTime($date) {

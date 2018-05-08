@@ -24,7 +24,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
+                            @if($user->client_status == 1)
                             <h1> Reschedule your appointment here!</h1>
+                            @else 
+                            <h1> Appointment Details</h1>
+                            @endif
                             <div class="description">
                             </div>
                         </div>
@@ -33,7 +37,11 @@
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
                         		<div class="form-top-left">
+                                    @if($user->client_status == 1)
                         			<h3>Your appointment information</h3>
+                                    @else 
+                                    <h1> The appointment details</h1>
+                                    @endif
                         		</div>
                         		<div class="form-top-right">
                         			<i class="fa fa-lock"></i>
@@ -42,22 +50,30 @@
                             <div class="form-bottom">
 			                    <form role="form" action="" method="POST" class = "/edit-appointment"  >
 			                    	
+                                     @if($user->client_status == 1)
                                     <div class="form-group">
 			                        	<label class="sr-only" for="form-password">General Comment</label>
                                          <h4>Name</h4>
 			                        	<input type="text" name="name" class="form-password form-control" id="form-password" value="{{ $appointment->dog->name }}" disabled> 
 			                        </div>
+                                    @else
+                                    <div class="form-group">
+			                        	<label class="sr-only" for="form-password">General Comment</label>
+                                         <h4>Client name</h4>
+			                        	<input type="text" name="name" class="form-password form-control" id="form-password" value="{{ $appointment->user->name }}" disabled> 
+			                        </div>
+                                    @endif
                                     <div class="form-group">
 			                        	<label class="sr-only" for="form-password">General Comment</label>
                                          <h4>Service</h4>
 			                        	<input type="text" name="service" class="form-password form-control" id="form-password" value="{{ $appointment->service }}" disabled> 
 			                        </div>
-                                    
+                                    @if($user->client_status == 1)
                                     <div class="form-group">
 			                    		<label class="sr-only" for="form-username">Date</label>
-                                        <h4>Date</h4>
+                                        <h4>Date</h4>  
 			                        	<input type="date" name="date" class="form-username form-control" id="form-username" value= {{ $appointment->date_time }}>
-			                        </div>
+                                    </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Time</label>
                                          <h4>Time</h4>
@@ -67,8 +83,37 @@
                                          <option value="{{ $time }}"> {{ \Carbon\Carbon::parse($time)->format("H:i") }}</option>
 			                             @endforeach
                                         </select>
-			                        </div>                
+			                        </div>   
                                     <button type="submit" class="btn">Update</button>
+                                    @else
+                                    <div class="form-group">
+			                        	<label class="sr-only" for="form-password">General Comment</label>
+                                         <h4>Date and Time</h4>
+			                        	<input type="text" name="name" class="form-password form-control" id="form-password" value="{{ \Carbon\Carbon::parse($appointment->date_time)->format('d-M-Y H:i') }}" disabled> 
+			                        </div>
+                                    <div class="form-group">
+                                         <h4>Address</h4>
+			                        	<input type="text" name="name" class="form-password form-control" id="form-password" value="{{ $appointment->user->address }}" disabled> 
+			                        </div>
+                                    <div class="form-group">
+                                         <h4>Mobile Phone Number</h4>
+			                        	<input type="text" name="name" class="form-password form-control" id="form-password" value="{{ $appointment->user->mobile_number }}" disabled> 
+			                        </div>
+                                    <div class="form-group">
+                                         <h4>Dog name</h4>
+			                        	<input type="text" name="name" class="form-password form-control" id="form-password" value="{{ $appointment->dog->name }}" disabled> 
+			                        </div>
+                                    <div class="form-group">
+                                         <h4>Dog breed</h4>
+			                        	<input type="text" name="name" class="form-password form-control" id="form-password" value="{{ $appointment->dog->breed }}" disabled> 
+			                        </div>
+                                    <div class="form-group">
+                                         <h4>Comment</h4>
+			                        	<input type="text" name="name" class="form-password form-control" id="form-password" value="{{ $appointment->comment }}" disabled> 
+			                        </div>
+                                    @endif     
+                                            
+                                    
 			                    </form>
 		                    </div>
                         </div>

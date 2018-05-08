@@ -27,7 +27,6 @@ class Controller extends BaseController
             $appointments = Appointment::with('dog')->where('user_id', $currentUser->id)->get();
         }
        
-        
         return View::make('homepage')->with('dogs', $dogs)->with('appointments', $appointments)->with('user', $currentUser);
     }
 }
