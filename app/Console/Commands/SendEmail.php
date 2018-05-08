@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use App\User;
 use Mail;
 use App\Mail\AppointmentReminder;
+use App\Mail\GroomerAppointmentReminder;
 use App\Appointment;
 use \DateTime;
 use \DateTimeZone;
@@ -64,6 +65,8 @@ class SendEmail extends Command
             $this->info('now' .$now. ' '.$datenow);
             $this->info('time'.$time. ' '. $appointment->date_time);
             $this->info('nojjw' .round(($time-$now)/ 60));
+
+            $users = User::all();
             
               if (($time-$now)/ 60 == 1440 && $appointment->send_reminder == false) {
                     $email = $appointment->user->email;
@@ -71,7 +74,16 @@ class SendEmail extends Command
                     // $currentappointment = Appointment::find($appointment->id);
                     $appointment->send_reminder = 1;
                     $appointment->save();
+
+                    foreach ($users as $user) {
+                        if ($user->client_status == 0) {
+                            Mail::to($user->email)->send(new GroomerAppointmentReminder($timeAppointment, $appointment->user->address));
+                        }
+                    }
+                  
                  }
+
+            
         }
         // Mail::to($email)->send(new AppointmentReminder);
         //  Mail::to('margareta.hardi@gmail.com')->send(new AppointmentReminder);
