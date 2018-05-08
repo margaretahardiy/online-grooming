@@ -195,6 +195,7 @@
 			<!-- FlexSlider -->
 
 <!--dogs start here-->
+@if($user->client_status == 1)
 <div class="dogs" id="dogs">
 	<div class="container">
 		<div class="services-main">
@@ -231,6 +232,7 @@
 		</div>
 	</div>
 </div>
+@endif
 <!--dogs end here-->
 
 <!--services start here-->
@@ -375,11 +377,13 @@
                         </a>
                     </div>
 					<h4>{{ \Carbon\Carbon::parse($appointment->date_time)->format('d/m/Y h:i A') }}</h4>
+					@if($user->client_status == 1)
 					<a href="/delete-appointment/{{ $appointment->id }}">
 					<h4>Cancel</h4>
-
+					@endif
 				</div>
             @endforeach
+			@if($user->client_status == 1)
 				<div class="col-md-4 ser-grid">
 					<div class="view view-first">
 						<a href="/new-appointment">
@@ -387,6 +391,7 @@
 	                   	</a>
                     </div>
 				</div>	
+			@endif
 			 <div class="clearfix"> </div>
 			</div>
 		</div>
