@@ -44,7 +44,7 @@
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Date</label>
                                         <h4>Date</h4>
-			                        	<input type="date" name="date" class="form-username form-control" id="form-username">
+			                        	<input type="date" name="date" class="form-username form-control" id="form-username" min="<?php echo date('Y-m-d')?>">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Time</label>
