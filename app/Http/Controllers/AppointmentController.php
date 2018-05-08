@@ -156,6 +156,6 @@ class AppointmentController extends Controller
 
     public function destroy($id) {
         Appointment::destroy($id);
-        return redirect('homepage');
+        return redirect('homepage')->with('cancel', 'Appointment cancelled');;
     }
 }

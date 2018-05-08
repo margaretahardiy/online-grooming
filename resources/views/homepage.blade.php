@@ -54,6 +54,13 @@
   <div class="fixed-header">	
 	<div class="container">
 		<div class="header-main">
+		@if (session('cancel'))
+                    <div class="row">
+                       <div class="alert alert-success">
+                        <strong>You have been successfully cancel your apppointment!</strong>
+                        </div>
+                    </div>
+        @endif
 			<div class="header-left">
 				<h2><a href="index.html">Tom's Dog Grooming</a></h2>
 			</div>
