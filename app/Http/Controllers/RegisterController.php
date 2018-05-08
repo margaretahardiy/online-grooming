@@ -85,6 +85,7 @@ class RegisterController extends Controller
         $user->name = Input::get('name');
         $user->email = Input::get('email');
         $user->password = Hash::make(Input::get('password'));
+        $user->client_status = 1;
         $password = Input::get('password');
         $confirmPassword = Input::get('confirm-password');
 

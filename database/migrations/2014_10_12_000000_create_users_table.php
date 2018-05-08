@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('home_number')->nullable();
             $table->string('work_number')->nullable();
+            $table->tinyInteger('client_status');
             $table->timestamps();
         });
 
