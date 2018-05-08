@@ -54,7 +54,7 @@
 			                         <div class="form-group">
 			                        	<label class="sr-only" for="form-password">DateOfBirth</label>
                                          <h4>Date Of Birth</h4>
-			                        	<input type="text" name="dateofbirth" class="form-password form-control" id="form-password">
+			                        	<input type="date" name="dateofbirth" class="form-password form-control" id="form-password">
 			                        </div>
                                     <div class="form-group">
 			                        	<label class="sr-only" for="form-password"></label>
