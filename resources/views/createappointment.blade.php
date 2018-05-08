@@ -79,7 +79,7 @@
                                          <h4>General Comment</h4>
 			                        	<input type="text" name="comment" class="form-password form-control" id="form-password"> 
 			                        </div>
-                                    <button type="submit" class="btn">Update</button>
+                                    <button type="submit" class="btn">Submit</button>
 			                    </form>
 		                    </div>
                         </div>
