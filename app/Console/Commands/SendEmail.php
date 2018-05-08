@@ -59,6 +59,7 @@ class SendEmail extends Command
             $datenow = $day->format("Y-m-d h:i:00");
 
             $now = strtotime($datenow);
+            $timeAppointment = (new DateTime($appointment->date_time))->format("h:i a");
         
             $this->info('now' .$now. ' '.$datenow);
             $this->info('time'.$time. ' '. $appointment->date_time);
@@ -66,7 +67,7 @@ class SendEmail extends Command
             
               if (($time-$now)/ 60 == 1440 && $appointment->send_reminder == false) {
                     $email = $appointment->user->email;
-                    Mail::to($email)->send(new AppointmentReminder($now, $time));
+                    Mail::to($email)->send(new AppointmentReminder($timeAppointment, $appointment->user->name));
                     // $currentappointment = Appointment::find($appointment->id);
                     $appointment->send_reminder = 1;
                     $appointment->save();
