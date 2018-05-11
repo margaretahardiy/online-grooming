@@ -51,9 +51,10 @@ class AppointmentController extends Controller
             $time2 = new DateTime($date  . 'T10:30:00');
             $time3 = new DateTime($date . 'T13:00:00');
             $time4 = new DateTime($date . 'T14:30:00');
-            $time5 = new DateTime($date . 'T16:30:00');
-           
-            $schedules = array($time1, $time2, $time3,$time4, $time5);
+            $time5 = new DateTime($date . 'T16:00:00');
+            $time6 = new DateTime($date . 'T17:30:00');
+
+            $schedules = array($time1, $time2, $time3,$time4, $time5, $time6);
             $availableTimes = array();
             $result = "";
             $i = 0;
