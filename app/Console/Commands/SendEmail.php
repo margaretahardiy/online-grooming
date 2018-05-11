@@ -53,7 +53,7 @@ class SendEmail extends Command
         $appointments = Appointment::all();
         foreach($appointments as $appointment) {
             date_default_timezone_set("Australia/Melbourne");   
-            $dateappointment  = (new DateTime($appointment->date_time))->format("Y-m-d h:i:s");
+            $dateappointment  = (new DateTime($appointment->date_time))->format("Y-m-d H:i:s");
             $time = strtotime( $dateappointment);
             
             $day = new DateTime(); 
@@ -62,16 +62,18 @@ class SendEmail extends Command
             $now = strtotime($datenow);
             $timeAppointment = (new DateTime($appointment->date_time))->format("h:i a");
         
+           
+
+            $users = User::all();
             $this->info('now' .$now. ' '.$datenow);
             $this->info('time'.$time. ' '. $appointment->date_time);
             $this->info('nojjw' .round(($time-$now)/ 60));
-
-            $users = User::all();
             
               if (($time-$now)/ 60 == 1440 && $appointment->send_reminder == false) {
                     $email = $appointment->user->email;
                     Mail::to($email)->send(new AppointmentReminder($timeAppointment, $appointment->user->name));
                     // $currentappointment = Appointment::find($appointment->id);
+                   
                     $appointment->send_reminder = 1;
                     $appointment->save();
 
