@@ -57,7 +57,7 @@ class SendEmail extends Command
             $time = strtotime( $dateappointment);
             
             $day = new DateTime(); 
-            $datenow = $day->format("Y-m-d h:i:00");
+            $datenow = $day->format("Y-m-d H:i:00");
 
             $now = strtotime($datenow);
             $timeAppointment = (new DateTime($appointment->date_time))->format("h:i a");
