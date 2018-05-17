@@ -34,3 +34,4 @@
  Route::get('/edit-appointment/{id}','AppointmentController@showEditAppointment');
  Route::post('/edit-appointment/{id}','AppointmentController@updateAppointment');
  Route::get('/delete-appointment/{id}','AppointmentController@destroy');
+ Route::get('/logout','Controller@doLogout');

@@ -29,5 +29,11 @@ class Controller extends BaseController
        
         return View::make('homepage')->with('dogs', $dogs)->with('appointments', $appointments)->with('user', $currentUser);
     }
+
+    public function doLogout() 
+    {
+        Session::flush();
+        return redirect('/');
+    }
 }
 

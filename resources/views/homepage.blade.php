@@ -75,6 +75,7 @@
 						<li><a class="scroll" href="#gallery">Gallery</a></li>
 						<li><a class="scroll" href="#appointment" >Appointments</a></li>
 						<li><a href="/profile" >Profile</a></li>
+						<li><a href="/logout" >Logout</a></li>
 					</ul>	
 					<!-- script-for-menu -->
 					 <script>
@@ -264,7 +265,7 @@
 	                    <img src="images/service2.png" />
 	                    <a href="info/Service.html">
 	                    <div class="mask">
-	                        <h2>wash and nail clipping</h2>	                                              
+	                        <h2>Wash and Nail clipping</h2>	                                              
 	                    </div></a>
                     </div>
 				</div>
@@ -273,7 +274,7 @@
 	                    <img src="images/service3.png" />
 	                    <a href="info/Service.html">
 	                    <div class="mask">
-	                        <h2>deluxe grooming</h2>	                                              
+	                        <h2>Deluxe Grooming</h2>	                                              
 	                    </div></a>
                     </div>
 				</div>	
